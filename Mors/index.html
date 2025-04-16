@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبدل جامع کد مورس</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            direction: rtl;
+            background-color: #f3f3f3;
+            padding: 20px;
+        }
+        input, button, select {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>تبدیل کد مورس دیجیتال</h1>
+    
+    <!-- تبدیل متن به کد مورس -->
+    <textarea id="textInput" rows="5" placeholder="کد یا متن برنامه‌نویسی خود را وارد کنید"></textarea>
+    <button onclick="textToMorse()">به مورس تبدیل کن</button>
+    <p id="morseResult"></p>
+
+    <!-- تبدیل کد مورس به متن -->
+    <textarea id="morseInput" rows="5" placeholder="کد مورس دیجیتال خود را وارد کنید"></textarea>
+    <button onclick="morseToText()">به متن تبدیل کن</button>
+    <p id="textResult"></p>
+
+    <script>
+        // جدول کد مورس دیجیتال
+        const morseTable = {
+            'A': '1010', 'B': '1110', 'C': '1011', 'D': '110',
+            'E': '10',   'F': '101',  'G': '1101', 'H': '1111',
+            'I': '11',   'J': '1000', 'K': '101',  'L': '1001',
+            'M': '11',   'N': '10',   'O': '111',  'P': '1001',
+            'Q': '1110', 'R': '101',  'S': '111',  'T': '1',
+            'U': '110',  'V': '1111', 'W': '100',  'X': '1101',
+            'Y': '1010', 'Z': '1100', 
+            '0': '11111', '1': '01111', '2': '00111', '3': '00011',
+            '4': '00001', '5': '00000', '6': '10000', '7': '11000',
+            '8': '11100', '9': '11110', 
+            ' ': '000' // فاصله برای جداسازی کلمات
+        };
+
+        // تبدیل متن به کد مورس
+        function textToMorse() {
+            const text = document.getElementById('textInput').value.trim().toUpperCase();
+            let morseCode = '';
+
+            for (const char of text) {
+                if (morseTable[char]) {
+                    morseCode += morseTable[char] + ' ';
+                } else {
+                    morseCode += '? '; // برای کاراکترهای ناشناس
+                }
+            }
+
+            document.getElementById('morseResult').innerText = `کد مورس: ${morseCode.trim()}`;
+        }
+
+        // تبدیل کد مورس به متن
+        function morseToText() {
+            const morseCode = document.getElementById('morseInput').value.trim();
+            const reverseTable = Object.fromEntries(Object.entries(morseTable).map(([key, value]) => [value, key]));
+            const words = morseCode.split('000'); // جداسازی کلمات
+            let text = '';
+
+            for (const word of words) {
+                const letters = word.split(' ');
+                for (const letter of letters) {
+                    text += reverseTable[letter] || '?'; // تبدیل هر کد مورس به حرف
+                }
+                text += ' ';
+            }
+
+            document.getElementById('textResult').innerText = `متن: ${text.trim()}`;
+        }
+    </script>
+</body>
+</html>

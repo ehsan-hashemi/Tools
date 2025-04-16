@@ -1,12 +1,32 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
     text-align: center;
     direction: rtl;
-    background-color: #f3f3f3;
+    background-color: greenyellow;
     padding: 20px;
 }
-input, button {
+
+input {
     margin: 10px;
     padding: 10px;
     font-size: 16px;
+    font-family: sans-serif;
+    background-color: rgba(0, 0, 255, 0.545);
+    color: aliceblue;
+}
+
+input::placeholder {
+    color: aliceblue;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    background-color: blue;
+}
+
+.result {
+    font-size: large;
 }
