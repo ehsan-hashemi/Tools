@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تبدیل دما</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>تبدیل دما</h1>
+        <input type="number" id="temperature" placeholder="دمای مورد نظر را وارد کنید">
+        <select id="unit">
+            <option value="Celsius">سلسیوس</option>
+            <option value="Fahrenheit">فارنهایت</option>
+        </select>
+        <button onclick="convertTemperature()">تبدیل</button>
+        <p id="result"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
