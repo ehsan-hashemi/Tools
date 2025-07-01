@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مرتب‌سازی الفبایی کلمات فارسی</title>
+  <style>
+    body {
+      font-family: "Vazir", sans-serif;
+      background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    input {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #3498db;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #2980b9;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #1c5980;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #2d3436;
+      background: #ecf0f1;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 500px) {
+      input {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔡 مرتب‌سازی کلمات فارسی</h1>
+  <input id="wordInput" type="text" placeholder="کلمات را با فاصله وارد کنید...">
+  <button onclick="sortWords()">مرتب‌سازی</button>
+  <div id="result">نتیجه اینجا نمایش داده می‌شود...</div>
+
+  <script>
+    function sortWords() {
+      const input = document.getElementById("wordInput").value.trim();
+      if (!input) {
+        document.getElementById("result").innerText = "لطفاً کلمات را وارد کنید!";
+        return;
+      }
+      const words = input.split(/\s+/);
+      const sorted = words.sort((a, b) => a.localeCompare(b, 'fa'));
+      document.getElementById("result").innerText = "کلمات مرتب‌شده: " + sorted.join("، ");
+    }
+  </script>
+
+</body>
+</html>
